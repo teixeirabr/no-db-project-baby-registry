@@ -1,14 +1,20 @@
 {
-  "name": "nodb-babylist-v2",
+  "name": "baby-list",
   "version": "0.1.0",
   "private": true,
+  "main": "server/index.js",
+  "proxy": "http://localhost:3999",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "react-toastify": "^5.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
