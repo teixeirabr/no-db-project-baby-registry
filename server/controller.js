@@ -21,22 +21,30 @@ const babyGift = [
 let id = 3;
 
 module.exports = {
+  
   getGifts: (req, res) => {
     res.status(200).send(babyGift);
   },
+
   addGifts: (req, res) => {
-    const { name, email, gifts } = req.body;
-    console.log(req.body);
-    babyGift.push({ id, name, email, gifts });
+    babyGift.push({ id, ...req.body });
     id++;
-    res.status(200).send(babyGift);
+    return res.status(200).send(babyGift);
   },
+
   deleteGifts: (req, res) => {
     const { newId } = req.params;
-    const index = babyGift.findIndex(e => e.id === +newId);
+    
+    console.log(req.params);
+    const index = babyGift.findIndex((gift, id) => {
+      console.log("index: ", id, " -> ", gift.id, +newId);
+      //If the 'return' is true then the index where the 'true' was found is returned
+      return gift.id === +newId;
+    });
     babyGift.splice(index, 1);
     res.status(200).send(babyGift);
   },
+  
   editGifts: (req, res) => {
     const { newId } = req.params;
     console.log(newId);
