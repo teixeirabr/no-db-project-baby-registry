@@ -46,7 +46,7 @@ export default class Gift extends Component {
   };
 
   giftEditSubmit = () => {
-    let giftsArray = this.state.gifts;
+    // let giftsArray = this.state.gifts;
     this.turnOffEdit();
     console.log("debugandoo", this.state);
     this.props.editGifts(this.state.id, {
