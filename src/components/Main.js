@@ -3,12 +3,12 @@ import Gift from "./Gift";
 import AddGift from "./AddGift";
 
 export default function Main(props) {
-  console.log(props);
+  console.log("props123", props);
   return (
     <div className="post-it">
       <AddGift addGift={props.addGift} />
       <ul>
-        {props.posts.map(e => {
+        {props.posts.map((e) => {
           return (
             <Gift
               key={e.id}

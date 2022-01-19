@@ -11,56 +11,62 @@ export default class Gift extends Component {
       email: this.props.email,
       gifts: this.props.gifts,
       id: this.props.id,
-      edit: false
+      edit: false,
     };
   }
 
   turnOnEdit = () => {
     this.setState({
-      edit: true
+      edit: true,
     });
   };
 
   turnOffEdit = () => {
     this.setState({
-      edit: false
+      edit: false,
     });
   };
 
-  handleNameInput = e => {
+  handleNameInput = (e) => {
     this.setState({
-      name: e.target.value
+      name: e.target.value,
     });
   };
 
-  handleEmailInput = e => {
+  handleEmailInput = (e) => {
     this.setState({
-      email: e.target.value
+      email: e.target.value,
     });
   };
 
-  handleGiftsInput = e => {
+  handleGiftsInput = (e) => {
     this.setState({
-      gifts: e.target.value
+      gifts: e.target.value,
     });
   };
 
   giftEditSubmit = () => {
     let giftsArray = this.state.gifts.split(",");
     this.turnOffEdit();
+    console.log("debugandoo", this.state);
     this.props.editGifts(this.state.id, {
       name: this.state.name,
       email: this.state.email,
-      gifts: giftsArray,
-      id: this.state.id
+      gifts: this.state.gifts,
+      id: this.state.id,
     });
   };
 
+  renderGifts = () => {
+    console.log("amlt", this.props);
+    return <span>{this.props.gifts}</span>;
+  };
+
   render() {
-    let giftMap = this.props.gifts.map(gift => {
-      return <span key={gift.id}> {gift},</span>;
-    });
-    console.log(giftMap);
+    // let giftMap = this.props.gifts.map((gift) => {
+    //   return <span key={gift.id}> {gift},</span>;
+    // });
+    // console.log(giftMap);
     // console.log(this.state);
     return (
       <li>
@@ -100,7 +106,7 @@ export default class Gift extends Component {
               />
               <p>Name: {this.props.name}</p>
               <p>Email: {this.props.email}</p>
-              <p>Gifts: {giftMap}</p>
+              <p>Gifts: {this.renderGifts()}</p>
               {/* <button onClick={() => this.props.delete(this.props.id)}>
                 Delete
               </button> */}

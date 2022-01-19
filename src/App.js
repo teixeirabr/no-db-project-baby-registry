@@ -14,24 +14,24 @@ class App extends Component {
     super();
     this.state = {
       str: "",
-      posts: []
+      posts: [],
     };
   }
 
   componentDidMount() {
     Axios.get("/api/posts")
-      .then(res => {
+      .then((res) => {
         // console.log(res.data);
         toast.success("Loading gifts");
         this.setState({
-          posts: res.data
+          posts: res.data,
         });
       })
       .catch(() => console.log("Get Failed"));
   }
   getGifts = () => {
     Axios.get(`/api/posts`)
-      .then(res => {
+      .then((res) => {
         // console.log(res);
         this.setState({ posts: res.data });
       })
@@ -39,46 +39,48 @@ class App extends Component {
   };
 
   editGifts = (newId, body) => {
-    Axios.put(`/api/posts/${newId}`, body);
-    console
-      .log(body)
-      .then(res => {
+    console.log("here is the body", body);
+    Axios.put(`/api/posts/${newId}`, body)
+      .then((res) => {
         // console.log(res);
         toast.success("Edited");
         this.setState({
-          posts: res.data
+          posts: res.data,
         });
       })
       .catch(() => console.log("Edit failed"));
   };
 
-  deleteGifts = newId => {
+  deleteGifts = (newId) => {
     Axios.delete(`/api/posts/${newId}`)
-      .then(res => {
+      .then((res) => {
         // console.log(res.data);
         toast.error("Deleted");
 
         this.setState({
-          posts: res.data
+          posts: res.data,
         });
       })
       .catch(() => console.log("Delete failed"));
   };
 
-  addGifts = body => {
+  addGifts = (body) => {
     Axios.post(`/api/posts/`, body)
-      .then(res => {
+      .then((res) => {
         // console.log(res.data);
         toast.success("Gift Added. Thank you");
         this.setState({
-          posts: res.data
+          posts: res.data,
         });
       })
       .catch(() => console.log("Post failed"));
   };
 
   render() {
-    // console.log(this.state.posts);
+    if (this.state.posts.length === 0) {
+      return null;
+    }
+    console.log("rendering", this.state.posts);
     return (
       <div className="App">
         <Header />
