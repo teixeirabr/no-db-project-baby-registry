@@ -9,26 +9,48 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 
+const babyGift = [
+  {
+    id: 0,
+    name: "Andre Teixeira",
+    email: "andrenone@gmail.com",
+    gifts: ["Rocking Chair", "Dresser"],
+  },
+  {
+    id: 1,
+    name: "Flavia Teixeira",
+    email: "flavianone@gmail.com",
+    gifts: ["Baby Monitor", "Lamp"],
+  },
+  {
+    id: 2,
+    name: "Carla Teixeira",
+    email: "flavia@gmail.com",
+    gifts: ["Bottle", "Sweater"],
+  },
+];
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
       str: "",
-      posts: [],
+      posts: babyGift,
     };
   }
 
-  componentDidMount() {
-    Axios.get("/api/posts")
-      .then((res) => {
-        // console.log(res.data);
-        toast.success("Loading gifts");
-        this.setState({
-          posts: res.data,
-        });
-      })
-      .catch(() => console.log("Get Failed"));
-  }
+  // componentDidMount() {
+  //   Axios.get("/api/posts")
+  //     .then((res) => {
+  //       // console.log(res.data);
+  //       toast.success("Loading gifts");
+  //       this.setState({
+  //         posts: res.data,
+  //       });
+  //     })
+  //     .catch(() => console.log("Get Failed"));
+  // }
+
   getGifts = () => {
     Axios.get(`/api/posts`)
       .then((res) => {
