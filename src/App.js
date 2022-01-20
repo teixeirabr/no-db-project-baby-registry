@@ -77,9 +77,9 @@ class App extends Component {
   };
 
   render() {
-    if (this.state.posts.length === 0) {
-      return null;
-    }
+    // if (this.state.posts.length === 0) {
+    //   return null;
+    // }
     console.log("rendering", this.state.posts);
     return (
       <div className="App">
