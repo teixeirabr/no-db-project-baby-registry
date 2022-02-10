@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button, Label } from "reactstrap";
 
 export default class AddGift extends Component {
   constructor() {
@@ -6,26 +7,26 @@ export default class AddGift extends Component {
     this.state = {
       nameInput: "",
       emailInput: "",
-      giftsInput: ""
+      giftsInput: "",
     };
   }
 
-  handleName = e => {
+  handleName = (e) => {
     // console.log(e);
     this.setState({
-      nameInput: e.target.value
+      nameInput: e.target.value,
     });
   };
 
-  handleEmail = e => {
+  handleEmail = (e) => {
     this.setState({
-      emailInput: e.target.value
+      emailInput: e.target.value,
     });
   };
 
-  handleGifts = e => {
+  handleGifts = (e) => {
     this.setState({
-      giftsInput: e.target.value
+      giftsInput: e.target.value,
     });
   };
 
@@ -35,7 +36,7 @@ export default class AddGift extends Component {
     let body = {
       name: nameInput,
       email: emailInput,
-      gifts: giftsArray
+      gifts: giftsArray,
     };
     this.props.addGift(body);
   };
@@ -43,30 +44,37 @@ export default class AddGift extends Component {
   render() {
     // console.log(this.props);
     return (
-      <div>
+      <div className="card text-primary bg-transparent border border-white rounded">
         <ul>
           <li>
-            <section className="inputGifts">
-              <p className="input-title">Friend's Name</p>
+            <section className="form-group">
+              <h3 className="card-title friends-name">Friend's Name</h3>
+
+              <br></br>
+
               <input
+                className="form-control"
                 onChange={this.handleName}
                 type="text"
                 placeholder={"Name"}
                 value={this.state.name}
               />
               <input
+                className="form-control"
                 onChange={this.handleEmail}
                 type="text"
                 placeholder={"E-mail"}
               />
               <input
+                className="form-control"
                 onChange={this.handleGifts}
                 type="text"
                 placeholder={"Gifts"}
               />
-              <button onClick={this.handleAdd} className="bubbly-button">
+              <hr></hr>
+              <Button onClick={this.handleAdd} color="danger">
                 ADD
-              </button>
+              </Button>
             </section>
           </li>
         </ul>

@@ -73,19 +73,25 @@ export default class Gift extends Component {
         <a href="#">
           {this.state.edit ? (
             <div>
-              <img width={"50px"} src={editPin} alt="hello" />
+              <img width={"30px"} src={editPin} alt="hello" />
+              {''}
+              <br/>
+              <br/>
               <input
-                type="text"
+                type="text-l"
+                className="form-control"
                 onChange={this.handleNameInput}
                 value={this.state.name}
               />
               <input
-                type="text"
+              className="form-control form-2"
+                type="text-l"
                 value={this.state.email}
                 onChange={this.handleEmailInput}
               />
               <input
-                type="text"
+              className="form-control"
+                type="text-l"
                 value={this.state.gifts}
                 onChange={this.handleGiftsInput}
               />
